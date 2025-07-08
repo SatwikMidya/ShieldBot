@@ -1,11 +1,18 @@
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require("discord.js");
 const { token } = require("./config.json");
-const fs = require('node:fs');   // native file system module used to read commands directory and identify command files
-const path = require('node:path');  //native path utitlity module
+const fs = require('node:fs');
+const path = require('node:path');
 const { execute } = require("./commands/utility/ping");
 
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+const client = new Client({
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers
+    ]
+});
 
 
 
